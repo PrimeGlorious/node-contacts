@@ -1,4 +1,4 @@
-const contacts = require("./db/contacts.js");
+const contacts = require("./contacts.js");
 const { Command } = require("commander");
 const program = new Command();
 program
@@ -16,7 +16,7 @@ async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       const contactsList = await contacts.listContacts();
-      return console.log(contactsList);
+      return console.table(contactsList);
     case "get":
       const contact = await contacts.getContactById(id);
       return console.log(contact);
